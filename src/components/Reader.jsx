@@ -20,6 +20,13 @@ export default function Reader({ book, onBack }) {
   const [error, setError] = useState(null);
   const [showAnnotationModal, setShowAnnotationModal] = useState(false);
   const [showAnnotationsList, setShowAnnotationsList] = useState(false);
+  const [isDarkReader, setIsDarkReader] = useState(() => {
+    return localStorage.getItem('dark_reader') === 'true';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('dark_reader', isDarkReader);
+  }, [isDarkReader]);
 
   // Load PDF
   useEffect(() => {
@@ -157,6 +164,14 @@ export default function Reader({ book, onBack }) {
             {totalPages ? `Página ${currentPage} de ${totalPages}` : 'Carregando...'}
           </div>
         </div>
+        <button
+          className={`reader__nav-btn ${isDarkReader ? 'reader__nav-btn--active' : ''}`}
+          onClick={() => setIsDarkReader(!isDarkReader)}
+          title="Alternar Modo Escuro"
+          style={{ padding: '0 0.5rem', fontSize: '1.5rem' }}
+        >
+          <i className={`fa-solid ${isDarkReader ? 'fa-sun' : 'fa-moon'}`}></i>
+        </button>
       </div>
 
       {/* Canvas / Content Area */}
@@ -194,7 +209,14 @@ export default function Reader({ book, onBack }) {
             )}
 
             <div className="reader__canvas-wrapper">
-              <canvas ref={canvasRef} className="reader__canvas" />
+              <canvas
+                ref={canvasRef}
+                className="reader__canvas"
+                style={{
+                  filter: isDarkReader ? 'invert(0.9) hue-rotate(180deg)' : 'none',
+                  transition: 'filter 0.3s ease'
+                }}
+              />
             </div>
           </>
         )}
