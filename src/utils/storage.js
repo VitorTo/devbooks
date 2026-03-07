@@ -56,3 +56,27 @@ export const deleteAnnotation = (bookId, index) => {
     localStorage.setItem('annotations', JSON.stringify(notes));
   }
 };
+
+export const getAllAnnotations = () => {
+  return JSON.parse(localStorage.getItem('annotations')) || {};
+};
+
+// ===== Data Portability =====
+
+export const exportAllData = () => {
+  return {
+    reading_progress: JSON.parse(localStorage.getItem('reading_progress')) || {},
+    recent_books: JSON.parse(localStorage.getItem('recent_books')) || [],
+    annotations: JSON.parse(localStorage.getItem('annotations')) || {},
+    dark_reader: localStorage.getItem('dark_reader') === 'true',
+    export_date: new Date().toISOString()
+  };
+};
+
+export const importAllData = (data) => {
+  if (!data) return;
+  if (data.reading_progress) localStorage.setItem('reading_progress', JSON.stringify(data.reading_progress));
+  if (data.recent_books) localStorage.setItem('recent_books', JSON.stringify(data.recent_books));
+  if (data.annotations) localStorage.setItem('annotations', JSON.stringify(data.annotations));
+  if (data.dark_reader !== undefined) localStorage.setItem('dark_reader', String(data.dark_reader));
+};

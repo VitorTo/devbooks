@@ -1,0 +1,16 @@
+{
+  "reading_progress": {
+    "entendendo-algoritmos": {
+      "lastPage": 50,
+      "totalPages": 200,
+      "updatedAt": "2026-03-07T20:00:00.000Z"
+    }
+  },
+  "recent_books": ["entendendo-algoritmos"],
+  "annotations": {
+    "entendendo-algoritmos": [
+      { "page": 10, "text": "Anotação de teste importada", "date": "2026-03-07T20:00:00.000Z" }
+    ]
+  },
+  "dark_reader": true
+}

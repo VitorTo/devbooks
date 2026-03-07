@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { getRecentBooks, getAllProgress } from '../utils/storage';
 
-export default function Home({ onOpenBook }) {
+export default function Home({ onOpenBook, onGoToHistory }) {
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState('Todos');
@@ -53,6 +53,9 @@ export default function Home({ onOpenBook }) {
           BibliotecaDev
         </h1>
         <p className="home__subtitle">Sua biblioteca de livros de programação</p>
+        <button className="home__history-link" onClick={onGoToHistory}>
+          <i className="fa-solid fa-clock-rotate-left"></i> Ver meu histórico de leitura
+        </button>
       </header>
 
       {/* Search */}
