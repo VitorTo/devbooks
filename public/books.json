@@ -1,0 +1,380 @@
+[
+  {
+    "id": "algoritmos-teoria-pratica",
+    "title": "Algoritmos - Teoria e Prática",
+    "author": "Thomas Cormen",
+    "category": "Algoritmos e Estruturas de Dados",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Algoritmos%20-%20Teoria%20e%20Pr%C3%A1tica%20-%20Autor%20(Thomas%20Cormen).pdf"
+  },
+  {
+    "id": "but-how-do-it-know",
+    "title": "But How Do It Know",
+    "author": "J. Clark Scott",
+    "category": "Algoritmos e Estruturas de Dados",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/But%20How%20Do%20It%20Know%20-%20The%20Basic%20Principles%20of%20Computers%20for%20Everyone%20-%20Author%20(J.%20Clark%20Scott).pdf"
+  },
+  {
+    "id": "entendendo-algoritmos",
+    "title": "Entendendo Algoritmos",
+    "author": "Aditya Y. Bhargava",
+    "category": "Algoritmos e Estruturas de Dados",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Entendendo%20Algoritmos%20-%20Um%20Guia%20Ilustrado%20Para%20Programadores%20e%20Outros%20Curiosos%20-%20Autor%20(Aditya%20Y.%20Bhargava).pdf"
+  },
+  {
+    "id": "expressoes-regulares",
+    "title": "Expressões Regulares",
+    "author": "Aurelio Marinho",
+    "category": "Algoritmos e Estruturas de Dados",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Express%C3%B5es%20Regulares%20-%20uma%20abordagem%20divertida%20-%20Autor%20(Aurelio%20Marinho).pdf"
+  },
+  {
+    "id": "introducao-data-science",
+    "title": "Introdução a Data Science",
+    "author": "Casa do Código",
+    "category": "Algoritmos e Estruturas de Dados",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Introdu%C3%A7%C3%A3o%20a%20data%20science%20-%20Algoritmos%20de%20machine%20learning%20e%20m%C3%A9todos%20de%20an%C3%A1lise%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf"
+  },
+  {
+    "id": "arquitetura-limpa",
+    "title": "Arquitetura Limpa",
+    "author": "Robert C. Martin",
+    "category": "Arquitetura de Software",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Arquitetura%20Limpa%20-%20O%20Guia%20do%20Artes%C3%A3o%20para%20Estrutura%20e%20Design%20de%20Software%20-%20Autor%20(Robert%20C.%20Martin).pdf"
+  },
+  {
+    "id": "big-data",
+    "title": "Big Data",
+    "author": "Casa do Código",
+    "category": "Arquitetura de Software",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Big%20Data%20-%20T%C3%A9cnicas%20e%20tecnologias%20para%20extra%C3%A7%C3%A3o%20de%20valor%20dos%20dados%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf"
+  },
+  {
+    "id": "introducao-arquitetura-design",
+    "title": "Introdução à Arquitetura de Design de Software",
+    "author": "Paulo Silveira",
+    "category": "Arquitetura de Software",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Introdu%C3%A7%C3%A3o%20%C3%A0%20arquitetura%20de%20design%20de%20software%20-%20Autor%20(Paulo%20Silveira).pdf"
+  },
+  {
+    "id": "principios-design-padroes",
+    "title": "Princípios de Design e Padrões de Projeto",
+    "author": "Robert C. Martin",
+    "category": "Arquitetura de Software",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Princ%C3%ADpios%20de%20Design%20e%20Padr%C3%B5es%20de%20Projeto%20-%20Autor%20(Robert%20C.%20Martin).pdf"
+  },
+  {
+    "id": "refatoracao",
+    "title": "Refatoração",
+    "author": "Martin Fowler",
+    "category": "Arquitetura de Software",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Refatora%C3%A7%C3%A3o%20-%20Aperfei%C3%A7oando%20o%20Design%20de%20C%C3%B3digos%20Existentes%20-%20Autor%20(Martin%20Fowler).pdf"
+  },
+  {
+    "id": "software-craftsman",
+    "title": "The Software Craftsman",
+    "author": "Sandro Mancuso",
+    "category": "Arquitetura de Software",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/The%20Software%20Craftsman%20-%20Professionalism%2C%20Pragmatism%2C%20Pride%20-%20Autor%20(Sandro%20Mancuso).pdf"
+  },
+  {
+    "id": "trabalho-eficaz-codigo-legado",
+    "title": "Trabalho Eficaz com Código Legado",
+    "author": "Michael C. Feathers",
+    "category": "Arquitetura de Software",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Trabalho%20Eficaz%20com%20C%C3%B3digo%20Legado%20-%20Autor%20(Michael%20C.%20Feathers).pdf"
+  },
+  {
+    "id": "jornada-empreendedor",
+    "title": "A Jornada do Empreendedor",
+    "author": "Casa do Código",
+    "category": "Carreira e Habilidades",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/A%20jornada%20do%20empreendedor%20-%20O%20her%C3%B3i%20da%20nossa%20Era%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf"
+  },
+  {
+    "id": "apprenticeship-patterns",
+    "title": "Apprenticeship Patterns",
+    "author": "Dave Hoover e Adewale Oshineye",
+    "category": "Carreira e Habilidades",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Apprenticeship%20Patterns%20-%20Guidance%20for%20the%20Aspiring%20Software%20Craftsman%20-%20Autor%20(Dave%20Hoover%20e%20Adewale%20Oshineye).pdf"
+  },
+  {
+    "id": "comecando-linux",
+    "title": "Começando com o Linux",
+    "author": "Casa do Código",
+    "category": "Carreira e Habilidades",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Come%C3%A7ando%20com%20o%20Linux%20-%20Comandos%2C%20servi%C3%A7os%20e%20administra%C3%A7%C3%A3o%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf"
+  },
+  {
+    "id": "como-ser-programador-melhor",
+    "title": "Como ser um Programador Melhor",
+    "author": "Pete Goodliffe",
+    "category": "Carreira e Habilidades",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Como%20ser%20um%20Programador%20Melhor%20-%20um%20Manual%20Para%20Programadores%20que%20se%20Importam%20com%20C%C3%B3digo%20-%20Autor%20(Pete%20Goodliffe).pdf"
+  },
+  {
+    "id": "programador-apaixonado",
+    "title": "O Programador Apaixonado",
+    "author": "Casa do Código",
+    "category": "Carreira e Habilidades",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/O%20Programador%20Apaixonado%20-%20Construindo%20uma%20Carreira%20Not%C3%A1vel%20em%20Desenvolvimento%20de%20Software%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf"
+  },
+  {
+    "id": "programador-pragmatico",
+    "title": "O Programador Pragmático",
+    "author": "Andrew Hunt e David Thomas",
+    "category": "Carreira e Habilidades",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/O%20Programador%20Pragm%C3%A1tico%20-%20Autor%20(Andrew%20Hunt%20e%20David%20Thomas).pdf"
+  },
+  {
+    "id": "mythical-man-month",
+    "title": "The Mythical Man-Month",
+    "author": "Frederick P. Brooks",
+    "category": "Carreira e Habilidades",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/The%20Mythical%20Man-Month%20Essays%20On%20Software%20Engineering%20-%20Author%20(Frederick%20P.%20Brooks).pdf"
+  },
+  {
+    "id": "codigo-limpo",
+    "title": "Código Limpo",
+    "author": "Robert C. Martin",
+    "category": "Desenvolvimento Ágil",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/C%C3%B3digo%20limpo%20-%20Habilidades%20pr%C3%A1ticas%20do%20Agile%20Software%20-%20Autor%20(Robert%20C.%20Martin).pdf"
+  },
+  {
+    "id": "agile-estimating-planning",
+    "title": "Agile Estimating and Planning",
+    "author": "Mike Cohn",
+    "category": "Desenvolvimento Ágil",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Agile%20Estimating%20and%20Planning%20-%20Autor%20(Mike%20Cohn).pdf"
+  },
+  {
+    "id": "agile-desenvolvimento",
+    "title": "Agile - Desenvolvimento de Software",
+    "author": "Casa do Código",
+    "category": "Desenvolvimento Ágil",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Agile%20-%20Desenvolvimento%20de%20Software%20com%20Entregas%20Frequentes%20e%20Foco%20no%20Valor%20de%20Neg%C3%B3cio%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf"
+  },
+  {
+    "id": "bdd-in-action",
+    "title": "BDD in Action",
+    "author": "John Ferguson Smart",
+    "category": "Desenvolvimento Ágil",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/BDD%20in%20Action%20-%20Behavior-Driven%20Development%20for%20the%20Whole%20Software%20Lifecycle%20-%20Autor%20(John%20Ferguson%20Smart).pdf"
+  },
+  {
+    "id": "metricas-ageis",
+    "title": "Métricas Ágeis",
+    "author": "Casa do Código",
+    "category": "Desenvolvimento Ágil",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/M%C3%A9tricas%20%C3%A1geis%20-%20Obtenha%20melhores%20resultados%20em%20sua%20equipe%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf"
+  },
+  {
+    "id": "scrum-gestao-agil",
+    "title": "Scrum - Gestão Ágil para Projetos de Sucesso",
+    "author": "Casa do Código",
+    "category": "Desenvolvimento Ágil",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Scrum%20-%20Gest%C3%A3o%20%C3%A1gil%20para%20projetos%20de%20sucesso%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf"
+  },
+  {
+    "id": "scrum-360",
+    "title": "Scrum 360",
+    "author": "Casa do Código",
+    "category": "Desenvolvimento Ágil",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Scrum%20360%20-%20Um%20guia%20completo%20e%20pra%CC%81tico%20de%20agilidade%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf"
+  },
+  {
+    "id": "tdd-teste-design",
+    "title": "TDD - Teste e Design no Mundo Real",
+    "author": "Casa do Código",
+    "category": "Desenvolvimento Ágil",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Test-Driven%20Development%20-%20Teste%20e%20Design%20no%20Mundo%20Real%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf"
+  },
+  {
+    "id": "testes-automatizados",
+    "title": "Testes Automatizados de Software",
+    "author": "Casa do Código",
+    "category": "Desenvolvimento Ágil",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Testes%20Automatizados%20de%20Software%20-%20Um%20Guia%20Pr%C3%A1tico%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf"
+  },
+  {
+    "id": "amazon-aws",
+    "title": "Amazon AWS",
+    "author": "Casa do Código",
+    "category": "DevOps",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Amazon%20AWS%20-%20Descomplicando%20a%20computa%C3%A7%C3%A3o%20na%20nuvem%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf"
+  },
+  {
+    "id": "aplicacoes-web-nodejs",
+    "title": "Aplicações Web Real Time com Node.js",
+    "author": "Casa do Código",
+    "category": "DevOps",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Aplica%C3%A7%C3%B5es%20web%20real%20time%20com%20Node-js%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf"
+  },
+  {
+    "id": "containers-docker",
+    "title": "Containers com Docker",
+    "author": "Casa do Código",
+    "category": "DevOps",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Containers%20com%20Docker%20-%20Do%20desenvolvimento%20%C3%A0%20produ%C3%A7%C3%A3o%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf"
+  },
+  {
+    "id": "controlando-versoes-git",
+    "title": "Controlando Versões com Git e GitHub",
+    "author": "Casa do Código",
+    "category": "DevOps",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Controlando%20Vers%C3%B5es%20com%20Git%20e%20GitHub%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf"
+  },
+  {
+    "id": "devops-na-pratica",
+    "title": "DevOps na Prática",
+    "author": "Casa do Código",
+    "category": "DevOps",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/DevOps%20na%20Pr%C3%A1tica%20-%20Entrega%20de%20Software%20Confi%C3%A1vel%20e%20Automatizada%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf"
+  },
+  {
+    "id": "jenkins",
+    "title": "Jenkins - Automatize Tudo",
+    "author": "Casa do Código",
+    "category": "DevOps",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Jenkins%20-%20Automatize%20Tudo%20sem%20Complica%C3%A7%C3%B5es%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf"
+  },
+  {
+    "id": "kubernetes",
+    "title": "Kubernetes",
+    "author": "Casa do Código",
+    "category": "DevOps",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Kubernetes%20-%20Tudo%20sobre%20orquestra%C3%A7%C3%A3o%20de%20cont%C3%AAineres%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf"
+  },
+  {
+    "id": "mongodb",
+    "title": "MongoDB",
+    "author": "Casa do Código",
+    "category": "DevOps",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/MongoDB%20-%20Construa%20Novas%20Aplica%C3%A7%C3%B5es%20com%20Novas%20Tecnologias%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf"
+  },
+  {
+    "id": "construindo-api-rest-node",
+    "title": "Construindo API REST com Node JS",
+    "author": "Casa do Código",
+    "category": "DevOps",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Construindo%20API%20REST%20com%20Node%20JS%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf"
+  },
+  {
+    "id": "startup-enxuta",
+    "title": "A Startup Enxuta",
+    "author": "Eric Ries",
+    "category": "Empresa e Cultura Organizacional",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/A%20Startup%20Enxuta%20-%20Autor%20(Eric%20Ries).pdf"
+  },
+  {
+    "id": "lean-enterprise",
+    "title": "LEAN ENTERPRISE",
+    "author": "Casa do Código",
+    "category": "Empresa e Cultura Organizacional",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/LEAN%20ENTERPRISE%20-%20Como%20empresas%20de%20alta%20performance%20inovam%20em%20escala%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf"
+  },
+  {
+    "id": "como-melhorar-desempenho-equipe",
+    "title": "Como Melhorar o Desempenho da Sua Equipe",
+    "author": "Software House",
+    "category": "Empresa e Cultura Organizacional",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Como%20Melhorar%20o%20Desempenho%20da%20Sua%20Equipe%20de%20Desenvolvimento%20-%20Autor(Software%20House).pdf"
+  },
+  {
+    "id": "cracking-coding-interview",
+    "title": "Cracking the Coding Interview",
+    "author": "Gayle Laakmann McDowell",
+    "category": "Entrevista e Preparação",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Cracking%20the%20Coding%20Interview%20-%20189%20Programming%20Questions%20and%20Solutions%20-%20Author%20(Gayle%20Laakmann%20McDowell).pdf"
+  },
+  {
+    "id": "guia-pratico-typescript",
+    "title": "Guia Prático de TypeScript",
+    "author": "Casa do Código",
+    "category": "Entrevista e Preparação",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Guia%20pr%C3%A1tico%20de%20TypeScript%20-%20Melhore%20suas%20aplica%C3%A7%C3%B5es%20JavaScript%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf"
+  },
+  {
+    "id": "tdd-desenvolvimento-guiado",
+    "title": "TDD - Desenvolvimento Guiado por Testes",
+    "author": "Ken Beck",
+    "category": "Entrevista e Preparação",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/TDD%20-%20Desenvolvimento%20Guiado%20por%20Testes%20-%20Autor%20(Ken%20Beck).pdf"
+  },
+  {
+    "id": "regra-nao-ter-regras",
+    "title": "A Regra é Não Ter Regras",
+    "author": "Reed Hastings",
+    "category": "Liderança e Gestão",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/A%20Regra%20%C3%A9%20N%C3%A3o%20Ter%20Regras%20-%20A%20Netflix%20e%20a%20Cultura%20da%20Reinven%C3%A7%C3%A3o%20-%20Autor%20(Reed%20Hastings).pdf"
+  },
+  {
+    "id": "ego-inimigo",
+    "title": "O Ego É Seu Inimigo",
+    "author": "Ryan Holiday",
+    "category": "Liderança e Gestão",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/O%20Ego%20%C3%89%20Seu%20Inimigo.%20Como%20Dominar%20Seu%20Pior%20Advers%C3%A1rio%20-%20Autor%20(Ryan%20Holiday).pdf"
+  },
+  {
+    "id": "managing-for-happiness",
+    "title": "Managing For Happiness",
+    "author": "Jurgen Appelo",
+    "category": "Liderança e Gestão",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Managing%20For%20Happiness%20-%20Autor%20(Jurgen%20Appelo).pdf"
+  },
+  {
+    "id": "clean-agile",
+    "title": "Clean Agile - Back to Basics",
+    "author": "Robert Martin",
+    "category": "Metodologias Ágeis",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Clean%20Agile%20-%20Back%20to%20Basics%20-%20Autor%20(Robert%20Martin).pdf"
+  },
+  {
+    "id": "extreme-programming",
+    "title": "Extreme Programming Explained",
+    "author": "Kent Beck",
+    "category": "Metodologias Ágeis",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Extreme%20Programming%20Explained%20-%20Embrace%20Change%20-%20Autor%20(Kent%20Beck).pdf"
+  },
+  {
+    "id": "real-world-kanban",
+    "title": "Real-World Kanban",
+    "author": "Mattias Skarin",
+    "category": "Metodologias Ágeis",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Real-World%20Kanban%20-%20Do%20Less%2C%20Accomplish%20More%20with%20Lean%20Thinking%20-%20Autor%20(Mattias%20Skarin).pdf"
+  },
+  {
+    "id": "clean-coder",
+    "title": "Clean Coder",
+    "author": "Robert C. Martin",
+    "category": "Padrões e Design",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Clean%20Coder%2C%20The%20-%20A%20Code%20of%20Conduct%20for%20Professional%20Programmers%20-%20Autor%20(Robert%20C.%20Martin).pdf"
+  },
+  {
+    "id": "domain-driven-design",
+    "title": "Domain Driven Design Rápido",
+    "author": "Eric Evans",
+    "category": "Padrões e Design",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Domain%20Driven%20Design%20Rapido%20-%20Autor%20(Eric%20Evans).pdf"
+  },
+  {
+    "id": "ddd-referencia",
+    "title": "Domain-Driven Design Referência",
+    "author": "Eric Evans",
+    "category": "Padrões e Design",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Domain-Driven%20Design%20Refer%C3%AAncia%20-%20Sum%C3%A1rio%20de%20Padr%C3%B5es%20e%20Defini%C3%A7%C3%B5es%20-%20Autor%20(Eric%20Evans).pdf"
+  },
+  {
+    "id": "padroes-projetos",
+    "title": "Padrões de Projetos (Gang of Four)",
+    "author": "Erich Gamma",
+    "category": "Padrões e Design",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Padr%C3%B5es%20de%20Projetos%20-%20Solu%C3%A7%C3%B5es%20Reutiliz%C3%A1veis%20de%20Software%20Orientados%20a%20Objetos%20-%20Autor%20(Erich%20Gamma).pdf"
+  },
+  {
+    "id": "progressive-web-apps",
+    "title": "Progressive Web Apps com React",
+    "author": "Casa do Código",
+    "category": "Padrões e Design",
+    "url": "https://raw.githubusercontent.com/KAYOKG/BibliotecaDev/main/LivrosDev/Progressive%20web%20apps%20-%20Construa%20aplica%C3%A7%C3%B5es%20progressivas%20com%20React%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf"
+  }
+]

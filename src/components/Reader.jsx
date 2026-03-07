@@ -1,0 +1,262 @@
+import { useState, useEffect, useRef, useCallback } from 'react';
+import * as pdfjsLib from 'pdfjs-dist';
+import { saveProgress, getProgress } from '../utils/storage';
+import AnnotationModal from './AnnotationModal';
+import AnnotationsList from './AnnotationsList';
+
+// Configure pdf.js worker
+pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
+
+export default function Reader({ book, onBack }) {
+  const canvasRef = useRef(null);
+  const viewportRef = useRef(null);
+  const pdfDocRef = useRef(null);
+  const renderTaskRef = useRef(null);
+  const touchStartRef = useRef(null);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [showAnnotationModal, setShowAnnotationModal] = useState(false);
+  const [showAnnotationsList, setShowAnnotationsList] = useState(false);
+
+  // Load PDF
+  useEffect(() => {
+    let cancelled = false;
+
+    const loadPdf = async () => {
+      setLoading(true);
+      setError(null);
+
+      try {
+        const loadingTask = pdfjsLib.getDocument({
+          url: book.url,
+          cMapUrl: `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/cmaps/`,
+          cMapPacked: true,
+        });
+
+        const pdf = await loadingTask.promise;
+        if (cancelled) return;
+
+        pdfDocRef.current = pdf;
+        setTotalPages(pdf.numPages);
+
+        // Restore saved progress
+        const saved = getProgress(book.id);
+        const startPage = saved?.lastPage || 1;
+        setCurrentPage(Math.min(startPage, pdf.numPages));
+        setLoading(false);
+      } catch (err) {
+        if (!cancelled) {
+          console.error('Failed to load PDF:', err);
+          setError('Não foi possível carregar o PDF. Verifique sua conexão.');
+          setLoading(false);
+        }
+      }
+    };
+
+    loadPdf();
+    return () => { cancelled = true; };
+  }, [book]);
+
+  // Render page
+  const renderPage = useCallback(async (pageNum) => {
+    const pdf = pdfDocRef.current;
+    const canvas = canvasRef.current;
+    if (!pdf || !canvas) return;
+
+    // Cancel any ongoing render
+    if (renderTaskRef.current) {
+      try {
+        renderTaskRef.current.cancel();
+      } catch (e) { /* ignore */ }
+    }
+
+    try {
+      const page = await pdf.getPage(pageNum);
+      const containerWidth = viewportRef.current?.clientWidth || window.innerWidth;
+      const originalViewport = page.getViewport({ scale: 1 });
+      const scale = containerWidth / originalViewport.width;
+      const viewport = page.getViewport({ scale });
+
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+
+      const ctx = canvas.getContext('2d');
+      const renderTask = page.render({
+        canvasContext: ctx,
+        viewport: viewport,
+      });
+
+      renderTaskRef.current = renderTask;
+      await renderTask.promise;
+    } catch (err) {
+      if (err.name !== 'RenderingCancelledException') {
+        console.error('Render error:', err);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!loading && totalPages > 0) {
+      renderPage(currentPage);
+      saveProgress(book.id, currentPage, totalPages);
+    }
+  }, [currentPage, loading, totalPages, renderPage, book.id]);
+
+  // Navigation
+  const goToPage = (page) => {
+    const clamped = Math.max(1, Math.min(page, totalPages));
+    setCurrentPage(clamped);
+    // Scroll to top when changing page
+    if (viewportRef.current) {
+      viewportRef.current.scrollTop = 0;
+    }
+  };
+
+  const nextPage = () => goToPage(currentPage + 1);
+  const prevPage = () => goToPage(currentPage - 1);
+
+  // Touch gestures for swipe
+  const handleTouchStart = (e) => {
+    touchStartRef.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartRef.current === null) return;
+    const diff = touchStartRef.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 60) {
+      if (diff > 0) nextPage();
+      else prevPage();
+    }
+    touchStartRef.current = null;
+  };
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') nextPage();
+      else if (e.key === 'ArrowLeft') prevPage();
+      else if (e.key === 'Escape') onBack();
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  });
+
+  return (
+    <div className="reader">
+      {/* Top Bar */}
+      <div className="reader__topbar">
+        <button className="reader__back-btn" onClick={onBack} title="Voltar">
+          <i className="fa-solid fa-arrow-left"></i>
+        </button>
+        <div className="reader__topbar-info">
+          <div className="reader__topbar-title">{book.title}</div>
+          <div className="reader__topbar-page">
+            {totalPages ? `Página ${currentPage} de ${totalPages}` : 'Carregando...'}
+          </div>
+        </div>
+      </div>
+
+      {/* Canvas / Content Area */}
+      <div
+        className="reader__viewport"
+        ref={viewportRef}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        {loading ? (
+          <div className="reader__loading">
+            <div className="reader__spinner" />
+            <span>Carregando PDF...</span>
+          </div>
+        ) : error ? (
+          <div className="reader__error">
+            <div className="reader__error-icon"><i className="fa-solid fa-triangle-exclamation"></i></div>
+            <p>{error}</p>
+            <button className="reader__error-btn" onClick={onBack}>
+              Voltar à Biblioteca
+            </button>
+          </div>
+        ) : (
+          <>
+            {/* FABs */}
+            {currentPage > 1 && (
+              <button className="reader__fab reader__fab--prev" onClick={prevPage}>
+                <i className="fa-solid fa-chevron-left"></i>
+              </button>
+            )}
+            {currentPage < totalPages && (
+              <button className="reader__fab reader__fab--next" onClick={nextPage}>
+                <i className="fa-solid fa-chevron-right"></i>
+              </button>
+            )}
+
+            <div className="reader__canvas-wrapper">
+              <canvas ref={canvasRef} className="reader__canvas" />
+            </div>
+          </>
+        )}
+      </div>
+
+      {/* Page Slider */}
+      {!loading && !error && totalPages > 0 && (
+        <div className="reader__page-slider-container">
+          <input
+            type="range"
+            className="reader__page-slider"
+            min={1}
+            max={totalPages}
+            value={currentPage}
+            onChange={e => goToPage(Number(e.target.value))}
+          />
+        </div>
+      )}
+
+      {/* Bottom Navigation */}
+      <div className="reader__bottombar">
+        <button className="reader__nav-btn" onClick={prevPage} disabled={currentPage <= 1}>
+          <span className="reader__nav-btn-icon"><i className="fa-solid fa-backward"></i></span>
+          Anterior
+        </button>
+        <button
+          className="reader__nav-btn"
+          onClick={() => setShowAnnotationModal(true)}
+        >
+          <span className="reader__nav-btn-icon"><i className="fa-solid fa-pen-to-square"></i></span>
+          Anotar
+        </button>
+        <button
+          className={`reader__nav-btn ${showAnnotationsList ? 'reader__nav-btn--active' : ''}`}
+          onClick={() => setShowAnnotationsList(!showAnnotationsList)}
+        >
+          <span className="reader__nav-btn-icon"><i className="fa-solid fa-sticky-note"></i></span>
+          Notas
+        </button>
+        <button className="reader__nav-btn" onClick={nextPage} disabled={currentPage >= totalPages}>
+          <span className="reader__nav-btn-icon"><i className="fa-solid fa-forward"></i></span>
+          Próxima
+        </button>
+      </div>
+
+      {/* Annotation Modal */}
+      {showAnnotationModal && (
+        <AnnotationModal
+          bookId={book.id}
+          currentPage={currentPage}
+          onClose={() => setShowAnnotationModal(false)}
+        />
+      )}
+
+      {/* Annotations List */}
+      {showAnnotationsList && (
+        <AnnotationsList
+          bookId={book.id}
+          onClose={() => setShowAnnotationsList(false)}
+          onGoToPage={goToPage}
+        />
+      )}
+    </div>
+  );
+}
