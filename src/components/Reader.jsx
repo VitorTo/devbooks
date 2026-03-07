@@ -20,6 +20,7 @@ export default function Reader({ book, onBack }) {
   const [error, setError] = useState(null);
   const [showAnnotationModal, setShowAnnotationModal] = useState(false);
   const [showAnnotationsList, setShowAnnotationsList] = useState(false);
+  const [zoom, setZoom] = useState(1);
   const [isDarkReader, setIsDarkReader] = useState(() => {
     return localStorage.getItem('dark_reader') === 'true';
   });
@@ -84,8 +85,10 @@ export default function Reader({ book, onBack }) {
       const page = await pdf.getPage(pageNum);
       const containerWidth = viewportRef.current?.clientWidth || window.innerWidth;
       const originalViewport = page.getViewport({ scale: 1 });
-      const scale = containerWidth / originalViewport.width;
-      const viewport = page.getViewport({ scale });
+
+      // Render at 2.0x container width for high quality even when zoomed
+      const renderScale = (containerWidth / originalViewport.width) * 2.0;
+      const viewport = page.getViewport({ scale: renderScale });
 
       canvas.width = viewport.width;
       canvas.height = viewport.height;
@@ -125,13 +128,18 @@ export default function Reader({ book, onBack }) {
   const nextPage = () => goToPage(currentPage + 1);
   const prevPage = () => goToPage(currentPage - 1);
 
+  // Zoom controls
+  const zoomIn = () => setZoom(prev => Math.min(prev + 0.25, 3));
+  const zoomOut = () => setZoom(prev => Math.max(prev - 0.25, 1));
+  const resetZoom = () => setZoom(1);
+
   // Touch gestures for swipe
   const handleTouchStart = (e) => {
     touchStartRef.current = e.touches[0].clientX;
   };
 
   const handleTouchEnd = (e) => {
-    if (touchStartRef.current === null) return;
+    if (touchStartRef.current === null || zoom > 1) return;
     const diff = touchStartRef.current - e.changedTouches[0].clientX;
     if (Math.abs(diff) > 60) {
       if (diff > 0) nextPage();
@@ -164,14 +172,27 @@ export default function Reader({ book, onBack }) {
             {totalPages ? `Página ${currentPage} de ${totalPages}` : 'Carregando...'}
           </div>
         </div>
-        <button
-          className={`reader__nav-btn ${isDarkReader ? 'reader__nav-btn--active' : ''}`}
-          onClick={() => setIsDarkReader(!isDarkReader)}
-          title="Alternar Modo Escuro"
-          style={{ padding: '0 0.5rem', fontSize: '1.5rem' }}
-        >
-          <i className={`fa-solid ${isDarkReader ? 'fa-sun' : 'fa-moon'}`}></i>
-        </button>
+        <div className="reader__topbar-actions">
+          <div className="reader__zoom-controls">
+            <button className="reader__zoom-btn" onClick={zoomOut} disabled={zoom <= 1} title="Diminuir Zoom">
+              <i className="fa-solid fa-minus"></i>
+            </button>
+            <span className="reader__zoom-text" onClick={resetZoom} title="Resetar Zoom">
+              {Math.round(zoom * 100)}%
+            </span>
+            <button className="reader__zoom-btn" onClick={zoomIn} disabled={zoom >= 3} title="Aumentar Zoom">
+              <i className="fa-solid fa-plus"></i>
+            </button>
+          </div>
+          <button
+            className={`reader__nav-btn ${isDarkReader ? 'reader__nav-btn--active' : ''}`}
+            onClick={() => setIsDarkReader(!isDarkReader)}
+            title="Alternar Modo Escuro"
+            style={{ padding: '0 0.5rem', fontSize: '1.2rem' }}
+          >
+            <i className={`fa-solid ${isDarkReader ? 'fa-sun' : 'fa-moon'}`}></i>
+          </button>
+        </div>
       </div>
 
       {/* Canvas / Content Area */}
@@ -196,25 +217,15 @@ export default function Reader({ book, onBack }) {
           </div>
         ) : (
           <>
-            {/* FABs */}
-            {currentPage > 1 && (
-              <button className="reader__fab reader__fab--prev" onClick={prevPage}>
-                <i className="fa-solid fa-chevron-left"></i>
-              </button>
-            )}
-            {currentPage < totalPages && (
-              <button className="reader__fab reader__fab--next" onClick={nextPage}>
-                <i className="fa-solid fa-chevron-right"></i>
-              </button>
-            )}
-
             <div className="reader__canvas-wrapper">
               <canvas
                 ref={canvasRef}
                 className="reader__canvas"
                 style={{
+                  width: `${zoom * 100}%`,
+                  maxWidth: 'none',
                   filter: isDarkReader ? 'invert(0.9) hue-rotate(180deg)' : 'none',
-                  transition: 'filter 0.3s ease'
+                  transition: 'filter 0.3s ease, width 0.2s ease-out'
                 }}
               />
             </div>
@@ -225,6 +236,18 @@ export default function Reader({ book, onBack }) {
       {/* Page Slider */}
       {!loading && !error && totalPages > 0 && (
         <div className="reader__page-slider-container">
+          <div className="reader__page-input-wrapper">
+            <input
+              type="number"
+              className="reader__page-input"
+              value={currentPage}
+              min={1}
+              max={totalPages}
+              onChange={e => goToPage(Number(e.target.value))}
+              onFocus={e => e.target.select()}
+            />
+            <span className="reader__page-total">/ {totalPages}</span>
+          </div>
           <input
             type="range"
             className="reader__page-slider"

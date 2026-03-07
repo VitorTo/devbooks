@@ -364,7 +364,7 @@ body {
   font-weight: 600;
   margin-bottom: 0.25rem;
   line-height: 1.3;
-  display: -webkit-box;
+  line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -475,25 +475,28 @@ body {
 .reader__viewport {
   flex: 1;
   overflow-y: auto;
-  overflow-x: hidden;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   padding: 0;
   background: #111;
   position: relative;
-  touch-action: pan-y;
+  touch-action: pan-x pan-y;
+  overflow: auto;
 }
 
 .reader__canvas-wrapper {
   display: flex;
-  justify-content: center;
-  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .reader__canvas {
   display: block;
-  max-width: 100%;
+  margin: 0 auto;
+  max-width: none;
   height: auto;
 }
 
@@ -627,11 +630,46 @@ body {
 
 /* Page slider */
 .reader__page-slider-container {
-  padding: 0 1rem 0.25rem;
+  padding: 0.5rem 1rem;
   background: var(--bg-glass-strong);
   backdrop-filter: blur(20px);
   border-top: 1px solid var(--border-subtle);
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.reader__page-input-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.reader__page-input {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  width: 50px;
+  text-align: center;
+  padding: 0.25rem;
+  font-family: var(--font-family);
+  font-size: 0.85rem;
+  font-weight: 600;
+  outline: none;
+}
+
+.reader__page-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.reader__page-total {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
 }
 
 .reader__page-slider {
@@ -797,6 +835,60 @@ body {
   justify-content: space-between;
   padding: 1rem 1.25rem;
   border-bottom: 1px solid var(--border-subtle);
+}
+
+.reader__topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.reader__zoom-controls {
+  display: flex;
+  align-items: center;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 2px;
+}
+
+.reader__zoom-btn {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  font-size: 0.8rem;
+}
+
+.reader__zoom-btn:hover:not(:disabled) {
+  background: var(--bg-card-hover);
+  color: var(--accent);
+}
+
+.reader__zoom-btn:disabled {
+  color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.reader__zoom-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  min-width: 45px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.reader__zoom-text:hover {
+  color: var(--accent);
 }
 
 .annotations-panel__title {
