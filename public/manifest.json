@@ -1,6 +1,6 @@
 {
-  "name": "BibliotecaDev",
-  "short_name": "BibliotecaDev",
+  "name": "devBooks",
+  "short_name": "devBooks",
   "description": "Leitor de livros de programação",
   "start_url": "/",
   "display": "standalone",

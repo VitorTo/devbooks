@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bibliotecadev-v1';
+const CACHE_NAME = 'devBooks-v1';
 const STATIC_ASSETS = [
   '/',
   '/index.html',

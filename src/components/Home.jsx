@@ -33,7 +33,7 @@ export default function Home({ onOpenBook, onGoToHistory }) {
   const filteredBooks = useMemo(() => {
     return books.filter(book => {
       const matchesSearch = book.title.toLowerCase().includes(search.toLowerCase()) ||
-                           book.author.toLowerCase().includes(search.toLowerCase());
+        book.author.toLowerCase().includes(search.toLowerCase());
       const matchesCategory = activeCategory === 'Todos' || book.category === activeCategory;
       return matchesSearch && matchesCategory;
     });
@@ -50,7 +50,7 @@ export default function Home({ onOpenBook, onGoToHistory }) {
       <header className="home__header">
         <h1 className="home__logo">
           <span className="home__logo-icon"><i className="fa-solid fa-book-open"></i></span>
-          BibliotecaDev
+          devBooks
         </h1>
         <p className="home__subtitle">Sua biblioteca de livros de programação</p>
         <button className="home__history-link" onClick={onGoToHistory}>
