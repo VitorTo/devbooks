@@ -7,7 +7,7 @@ import AnnotationsList from './AnnotationsList';
 // Configure pdf.js worker
 pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
 
-export default function Reader({ book, onBack }) {
+export default function Reader({ book, onBack, initialPage }) {
   const canvasRef = useRef(null);
   const viewportRef = useRef(null);
   const pdfDocRef = useRef(null);
@@ -21,6 +21,7 @@ export default function Reader({ book, onBack }) {
   const [showAnnotationModal, setShowAnnotationModal] = useState(false);
   const [showAnnotationsList, setShowAnnotationsList] = useState(false);
   const [zoom, setZoom] = useState(1);
+  const [shareToast, setShareToast] = useState(false);
   const [isDarkReader, setIsDarkReader] = useState(() => {
     return localStorage.getItem('dark_reader') === 'true';
   });
@@ -50,9 +51,9 @@ export default function Reader({ book, onBack }) {
         pdfDocRef.current = pdf;
         setTotalPages(pdf.numPages);
 
-        // Restore saved progress
+        // Restore saved progress, but prefer initialPage from a shared link
         const saved = getProgress(book.id);
-        const startPage = saved?.lastPage || 1;
+        const startPage = initialPage || saved?.lastPage || 1;
         setCurrentPage(Math.min(startPage, pdf.numPages));
         setLoading(false);
       } catch (err) {
@@ -128,6 +129,35 @@ export default function Reader({ book, onBack }) {
   const nextPage = () => goToPage(currentPage + 1);
   const prevPage = () => goToPage(currentPage - 1);
 
+  // Update URL hash so the current page can be shared
+  useEffect(() => {
+    window.location.hash = `book=${book.id}&page=${currentPage}`;
+  }, [book.id, currentPage]);
+
+  // Clear hash when leaving reader
+  const handleBack = () => {
+    window.location.hash = '';
+    onBack();
+  };
+
+  // Share current page
+  const sharePage = async () => {
+    const url = `${window.location.origin}${window.location.pathname}#book=${book.id}&page=${currentPage}`;
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch {
+      // Fallback for browsers without clipboard API
+      const ta = document.createElement('textarea');
+      ta.value = url;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+    setShareToast(true);
+    setTimeout(() => setShareToast(false), 2500);
+  };
+
   // Zoom controls
   const zoomIn = () => setZoom(prev => Math.min(prev + 0.25, 3));
   const zoomOut = () => setZoom(prev => Math.max(prev - 0.25, 1));
@@ -163,7 +193,7 @@ export default function Reader({ book, onBack }) {
     <div className="reader">
       {/* Top Bar */}
       <div className="reader__topbar">
-        <button className="reader__back-btn" onClick={onBack} title="Voltar">
+        <button className="reader__back-btn" onClick={handleBack} title="Voltar">
           <i className="fa-solid fa-arrow-left"></i>
         </button>
         <div className="reader__topbar-info">
@@ -184,6 +214,14 @@ export default function Reader({ book, onBack }) {
               <i className="fa-solid fa-plus"></i>
             </button>
           </div>
+          <button
+            className="reader__nav-btn reader__share-btn"
+            onClick={sharePage}
+            title="Compartilhar página"
+            style={{ padding: '0 0.5rem', fontSize: '1.2rem' }}
+          >
+            <i className="fa-solid fa-link"></i>
+          </button>
           <button
             className={`reader__nav-btn ${isDarkReader ? 'reader__nav-btn--active' : ''}`}
             onClick={() => setIsDarkReader(!isDarkReader)}
@@ -301,6 +339,13 @@ export default function Reader({ book, onBack }) {
           onClose={() => setShowAnnotationsList(false)}
           onGoToPage={goToPage}
         />
+      )}
+
+      {/* Share Toast */}
+      {shareToast && (
+        <div className="share-toast">
+          <i className="fa-solid fa-check"></i> Link copiado!
+        </div>
       )}
     </div>
   );

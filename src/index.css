@@ -1327,3 +1327,40 @@ body {
 .safety-popup__btn--apply:hover {
   background: var(--bg-card-hover);
 }
+
+/* ===== SHARE TOAST ===== */
+.share-toast {
+  position: absolute;
+  top: 4.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-glow);
+  z-index: 1000;
+  animation: slideDown 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28), fadeOut 0.3s ease 2.2s forwards;
+  pointer-events: none;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}

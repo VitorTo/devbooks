@@ -7,10 +7,36 @@ import { exportAllData, importAllData } from './utils/storage';
 function App() {
   const [view, setView] = useState('home'); // 'home', 'reader', 'history'
   const [currentBook, setCurrentBook] = useState(null);
+  const [initialPage, setInitialPage] = useState(null);
   const [importFlow, setImportFlow] = useState({ active: false, backup: null, timeLeft: 0 });
   const timerRef = useRef(null);
 
+  // On startup, read hash to open a shared link: #book=BOOK_ID&page=N
+  useEffect(() => {
+    const parseHash = () => {
+      const hash = window.location.hash.slice(1);
+      if (!hash) return;
+      const params = Object.fromEntries(new URLSearchParams(hash));
+      if (params.book) {
+        // Load books.json to find the book object
+        fetch('/books.json')
+          .then(r => r.json())
+          .then(books => {
+            const book = books.find(b => b.id === params.book);
+            if (book) {
+              setInitialPage(params.page ? parseInt(params.page, 10) : 1);
+              setCurrentBook(book);
+              setView('reader');
+            }
+          })
+          .catch(console.error);
+      }
+    };
+    parseHash();
+  }, []);
+
   const handleOpenBook = (book) => {
+    setInitialPage(null); // Clear any shared page when opening normally
     setCurrentBook(book);
     setView('reader');
   };
@@ -65,7 +91,7 @@ function App() {
   return (
     <div className="app">
       {view === 'reader' && currentBook ? (
-        <Reader book={currentBook} onBack={handleBack} />
+        <Reader book={currentBook} onBack={handleBack} initialPage={initialPage} />
       ) : view === 'history' ? (
         <History onBack={handleBack} onImport={handleImport} />
       ) : (
