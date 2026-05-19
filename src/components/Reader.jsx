@@ -160,7 +160,7 @@ export default function Reader({ book, onBack, initialPage }) {
 
   // Zoom controls
   const zoomIn = () => setZoom(prev => Math.min(prev + 0.25, 3));
-  const zoomOut = () => setZoom(prev => Math.max(prev - 0.25, 0.5));
+  const zoomOut = () => setZoom(prev => Math.max(prev - 0.25, 0.25));
   const resetZoom = () => setZoom(1);
 
   // Touch gestures for swipe
@@ -204,7 +204,7 @@ export default function Reader({ book, onBack, initialPage }) {
         </div>
         <div className="reader__topbar-actions">
           <div className="reader__zoom-controls">
-            <button className="reader__zoom-btn" onClick={zoomOut} disabled={zoom <= 0.5} title="Diminuir Zoom">
+            <button className="reader__zoom-btn" onClick={zoomOut} disabled={zoom <= 0.25} title="Diminuir Zoom">
               <i className="fa-solid fa-minus"></i>
             </button>
             <span className="reader__zoom-text" onClick={resetZoom} title="Resetar Zoom">
